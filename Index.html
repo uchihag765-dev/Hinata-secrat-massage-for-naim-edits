@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hinata's Secret 💜</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(145deg,#180d2c,#4b2670,#160d27);color:white;min-height:100vh;display:grid;place-items:center;padding:18px}
+.card{width:100%;max-width:410px;background:#ffffff12;border:1px solid #ffffff30;border-radius:24px;padding:25px;text-align:center;box-shadow:0 12px 40px #0005}
+h1{color:#f2caff}
+.sub{color:#e2c9f3}
+button{border:0;border-radius:24px;padding:13px 18px;margin:6px;background:#d8a7ff;color:#28113e;font-weight:bold;font-size:15px}
+.msg{display:none;text-align:left;background:#ffffff15;border-radius:16px;padding:16px;line-height:1.7;margin-top:16px}
+#chat{display:none;text-align:left;margin-top:18px}
+.bubble{padding:12px;background:#ffffff20;border-radius:15px;margin:8px 0;line-height:1.5}
+small{color:#dfc5ef}
+</style>
+</head>
+<body>
+<main class="card">
+<div style="font-size:48px">💜🌙</div>
+<h1>Hinata's Secret Message</h1>
+<p class="sub">ひなた • Fan-Made Experience</p>
+<p>একটা ছোট্ট গোপন বার্তা তোমার জন্য…</p>
+<button onclick="reveal()">💌 Open Secret Message</button>
+<div class="msg" id="message">
+<strong>বাংলা 💜</strong><br>
+তোমার ছোট্ট হাসিটাও কারও দিন সুন্দর করে দিতে পারে। নিজের ওপর বিশ্বাস রেখো, কখনো আশা হারিয়ো না। 🌸
+<br><br>
+<strong>English 🌸</strong><br>
+“Even a little smile can brighten someone's day. Believe in yourself and never lose hope.”
+</div>
+<hr style="border-color:#ffffff25;margin:22px 0">
+<h3>📱 Hinata's Phone</h3>
+<button onclick="showChat()">💬 Open Chat</button>
+<button onclick="callHinata()">📞 Call Hinata</button>
+<div id="chat">
+<div class="bubble"><b>Hinata 💜</b><br>Hello! Thanks for visiting my fan-made page. 🌸</div>
+<div class="bubble">こんにちは! I hope your day is wonderful.</div>
+</div>
+<div id="call" class="msg"></div>
+<p><small>Unofficial fan-made page • Not affiliated with Naruto</small></p>
+</main>
+<script>
+function reveal(){
+ document.getElementById('message').style.display='block';
+}
+function showChat(){
+ const c=document.getElementById('chat');
+ c.style.display=c.style.display==='block'?'none':'block';
+}
+let timer;
+function callHinata(){
+ const c=document.getElementById('call');
+ clearTimeout(timer);
+ c.style.display='block';
+ c.innerHTML='<b>📞 Calling Hinata…</b><p>Connecting to the fan-made call simulation 💜</p><p id="count">05:00 remaining</p>';
+ let remaining=300;
+ const interval=setInterval(()=>{
+  remaining--;
+  const el=document.getElementById('count');
+  if(!el){clearInterval(interval);return}
+  el.textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0')+' remaining';
+  if(remaining<=0){
+   clearInterval(interval);
+   c.innerHTML='<b>📵 No answer · Call ended</b><p>Hinata couldn't answer this fan-made call. 💜</p>';
+  }
+ },1000);
+ timer=setTimeout(()=>clearInterval(interval),301000);
+}
+</script>
+</body>
+</html>
